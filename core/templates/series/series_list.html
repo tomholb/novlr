@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+	<h1>Series List</h1>
+	{% if series_list %}
+		{% for series in series_list %}
+			<div class="card" style="width: 25rem; height: 35rem;">
+			  <img src="..." class="card-img-top" alt="...">
+			  <div class="card-body">
+				<h5 class="card-title">{{ series.title }}</h5>
+				<p class="card-text">Series Summary</p>
+				<a href="{{ series.get_absolute_url }}" class="btn btn-primary">Go to Series Page</a>
+			  </div>
+			</div>
+		{% endfor %}
+	{% else %}
+		<p>There are no books to read at this point.</p>
+	{% endif %}       
+{% endblock %}
