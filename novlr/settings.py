@@ -149,5 +149,10 @@ STATIC_URL = '/static/'
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    BASE_DIR /  'static'),
+)
+
 # Activate Django-Heroku.
 django_heroku.settings(locals())
