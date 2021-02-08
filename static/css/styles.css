@@ -4,6 +4,6 @@
     list-style: none;
 }
 
-.body {
-	font-size: 16px;
+#my-html,#my-body{
+	font-size: 1.25rem;
 }
