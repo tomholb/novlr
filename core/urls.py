@@ -1,6 +1,5 @@
-from django.urls import path
+from django.urls import path, static
 from . import views
-from django.conf.urls.static import url, static
 
 urlpatterns = [
     path('', views.index, name='index'),
