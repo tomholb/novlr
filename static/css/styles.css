@@ -7,3 +7,7 @@
 #my-html,#my-body{
 	font-size: 1.25rem;
 }
+
+#bootstrap-overrides body { /* 100+1=101 priority score, yay! */
+  font-size: 1.25rem;
+}
