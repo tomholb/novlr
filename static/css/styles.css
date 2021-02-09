@@ -4,6 +4,6 @@
     list-style: none;
 }
 
-#bootstrap-overrides body { /* 100+1=101 priority score, yay! */
+#bootstrap-overrides p { /* 100+1=101 priority score, yay! */
       font-size: 1.25rem;
 }
