@@ -20,4 +20,4 @@ urlpatterns += [
     path('chapter/create/', views.ChapterCreate.as_view(), name='chapter-create'),
     path('chapter/<int:pk>/update/', views.ChapterUpdate.as_view(), name='chapter-update'),
     path('chapter/<int:pk>/delete/', views.ChapterDelete.as_view(), name='chapter-delete'),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

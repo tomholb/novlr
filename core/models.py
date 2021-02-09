@@ -40,7 +40,7 @@ class Book(models.Model):
     # Foreign Key for Author, which is a one to many relationship (one author to many books)
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
     
-    cover = models.ImageField(upload_to='bookcovers', null=True, blank=True)
+    cover = models.ImageField(upload_to='media', null=True, blank=True)
     
     series = models.ForeignKey('Series', on_delete=models.SET_NULL, null=True, blank=True)
     series_number = models.IntegerField(default=1, blank=True, null=True)
@@ -116,7 +116,7 @@ class Author(models.Model):
 class Series(models.Model):
     """Model representing the author"""
     title = models.CharField(max_length=100)
-    cover = models.ImageField(upload_to='seriescovers', null=True, blank=True)
+    cover = models.ImageField(upload_to='media', null=True, blank=True)
            
     def get_absolute_url(self):
         """Returns the URL to access the author instance"""
