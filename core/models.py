@@ -116,7 +116,7 @@ class Author(models.Model):
 class Series(models.Model):
     """Model representing the author"""
     title = models.CharField(max_length=100)
-    cover = models.ImageField(upload_to='media', null=True, blank=True
+    cover = models.ImageField(upload_to='media', null=True, blank=True)
     summary = models.TextField(max_length=1000, help_text='Enter a brief description of the Series')
            
     def get_absolute_url(self):
