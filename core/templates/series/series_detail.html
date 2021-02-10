@@ -5,50 +5,47 @@
 <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
 <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 
-    <!--Header section of the book -->
-    <h1>{{ book.title }}</h1>
-    <div class="row">
+    <!--Header section of the Series -->
+    <h1>{{ series.title }}</h1>
+    <!--<div class="row">
 		<div class="col-sm-4"><strong>Genre:</strong> {{ book.genre.all|join:", " }}</div>
 		<div class="col-sm-4"><strong>Series:</strong> {{ book.series }}</div>
 		<div class="col-sm-4"><strong>Current Status:</strong> {{ book.get_status_display }}</div>
 	</div>
     <div class="row">
 		<div class="col-sm-12"><strong>Summary:</strong> {{ book.summary }}</div>
-	</div>
+	</div>-->
 	<hr></br>
 
-	<!--Collapsible Chapter sections-->
+	<!--Collapsible Book sections-->
 	<div class="col-md-10">
-		<h3 class=" text-black">Chapters</h2>
+		<h3 class=" text-black">Books</h2>
 		<span class="loader pull-right"><span class="loader-inner"></span></span>
 		<hr></br>
-		{% for chapter in book.chapter_set.all %}			
+		{% for book in book_list %}
+		  {% if book.series.title == series.title %}
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-				<div class="panel panel-default">
-				
+				<div class="panel panel-default">				
 					<div class="panel panel-default">
-					<div class="panel-heading" role="tab" id="heading{{ chapter.number }}">
-						<h4 class="panel-title">
-							<a class="collapsed{{ chapter.number }}" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ chapter.number }}" aria-expanded="true" aria-controls="collapse{{ chapter.number }}">
-								<strong>{{ chapter.number }} - {{ chapter.title }} </strong>
-								<span  style="font-size: .8em; padding-left:2%;" class="{% if chapter.status == 'f' %}text-success{% elif copy.status == 'd' %}text-danger{% else %}text-warning{% endif %}">
-									{{ chapter.get_status_display }}
-								</span>
-								
-								<span style="font-size: .6em; padding-left:2%;"> {{ chapter.word_count }} words </span>
-								
-							</a>
-						</h4>
-						
-					</div>
-					<div id="collapse{{ chapter.number }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{ chapter.number }}">
-						<div class="panel-body">
-							<p>{{ chapter.body|safe }}</p>
+						<div class="panel-heading" role="tab" id="heading{{ chapter.number }}">
+							<h4 class="panel-title">
+								<a class="collapsed{{ chapter.number }}" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ chapter.number }}" aria-expanded="true" aria-controls="collapse{{ chapter.number }}">
+									<strong>{{ book.title }}</strong>
+									<span  style="font-size: .8em; padding-left:2%;" class="{% if chapter.status == 'f' %}text-success{% elif copy.status == 'd' %}text-danger{% else %}text-warning{% endif %}">
+										{{ book.get_status_display }}
+									</span>
+									<a href="{{ book.get_absolute_url }}" class="btn btn-primary">Start Reading</a>
+								</a>
+							</h4>
 						</div>
+						<!--<div id="collapse{{ chapter.number }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{ chapter.number }}">
+						<div class="panel-body">
+							<a href="{{ book.get_absolute_url }}" class="btn btn-primary">Start Reading</a>
+						</div>-->
 					</div>
 				</div>
 			</div>
-					
+			{% endif %}
 		{% endfor %}
 	</div>
 
